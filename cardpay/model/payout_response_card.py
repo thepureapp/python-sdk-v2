@@ -30,24 +30,85 @@ class PayoutResponseCard(object):
       attribute_map (dict): The key is attribute name
                             and the value is json key in definition.
     """
-    swagger_types = {"issuing_country_code": "str", "masked_pan": "str"}
+    swagger_types = {
+        "expiration": "str",
+        "holder": "str",
+        "issuing_country_code": "str",
+        "masked_pan": "str",
+    }
 
     attribute_map = {
+        "expiration": "expiration",
+        "holder": "holder",
         "issuing_country_code": "issuing_country_code",
         "masked_pan": "masked_pan",
     }
 
-    def __init__(self, issuing_country_code=None, masked_pan=None):  # noqa: E501
+    def __init__(
+        self, expiration=None, holder=None, issuing_country_code=None, masked_pan=None
+    ):  # noqa: E501
         """PayoutResponseCard - a model defined in Swagger"""  # noqa: E501
 
+        self._expiration = None
+        self._holder = None
         self._issuing_country_code = None
         self._masked_pan = None
         self.discriminator = None
 
+        if expiration is not None:
+            self.expiration = expiration
+        if holder is not None:
+            self.holder = holder
         if issuing_country_code is not None:
             self.issuing_country_code = issuing_country_code
         if masked_pan is not None:
             self.masked_pan = masked_pan
+
+    @property
+    def expiration(self):
+        """Gets the expiration of this PayoutResponseCard.  # noqa: E501
+
+        Customer’s card expiration date. Format: `mm/yyyy`  # noqa: E501
+
+        :return: The expiration of this PayoutResponseCard.  # noqa: E501
+        :rtype: str
+        """
+        return self._expiration
+
+    @expiration.setter
+    def expiration(self, expiration):
+        """Sets the expiration of this PayoutResponseCard.
+
+        Customer’s card expiration date. Format: `mm/yyyy`  # noqa: E501
+
+        :param expiration: The expiration of this PayoutResponseCard.  # noqa: E501
+        :type: str
+        """
+
+        self._expiration = expiration
+
+    @property
+    def holder(self):
+        """Gets the holder of this PayoutResponseCard.  # noqa: E501
+
+        Customer's cardholder name. Any valid cardholder name. Not present by default, ask CardPay manager to enable it if needed.  # noqa: E501
+
+        :return: The holder of this PayoutResponseCard.  # noqa: E501
+        :rtype: str
+        """
+        return self._holder
+
+    @holder.setter
+    def holder(self, holder):
+        """Sets the holder of this PayoutResponseCard.
+
+        Customer's cardholder name. Any valid cardholder name. Not present by default, ask CardPay manager to enable it if needed.  # noqa: E501
+
+        :param holder: The holder of this PayoutResponseCard.  # noqa: E501
+        :type: str
+        """
+
+        self._holder = holder
 
     @property
     def issuing_country_code(self):

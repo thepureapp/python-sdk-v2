@@ -35,24 +35,24 @@ class PayoutRequestCustomer(object):
                             and the value is json key in definition.
     """
     swagger_types = {
-        "document_number": "str",
         "document_type": "str",
         "email": "str",
         "first_name": "str",
         "full_name": "str",
         "id": "str",
+        "identity": "str",
         "last_name": "str",
         "living_address": "PayoutRequestLivingAddress",
         "phone": "str",
     }
 
     attribute_map = {
-        "document_number": "document_number",
         "document_type": "document_type",
         "email": "email",
         "first_name": "first_name",
         "full_name": "full_name",
         "id": "id",
+        "identity": "identity",
         "last_name": "last_name",
         "living_address": "living_address",
         "phone": "phone",
@@ -60,31 +60,29 @@ class PayoutRequestCustomer(object):
 
     def __init__(
         self,
-        document_number=None,
         document_type=None,
         email=None,
         first_name=None,
         full_name=None,
         id=None,
+        identity=None,
         last_name=None,
         living_address=None,
         phone=None,
     ):  # noqa: E501
         """PayoutRequestCustomer - a model defined in Swagger"""  # noqa: E501
 
-        self._document_number = None
         self._document_type = None
         self._email = None
         self._first_name = None
         self._full_name = None
         self._id = None
+        self._identity = None
         self._last_name = None
         self._living_address = None
         self._phone = None
         self.discriminator = None
 
-        if document_number is not None:
-            self.document_number = document_number
         if document_type is not None:
             self.document_type = document_type
         if email is not None:
@@ -95,35 +93,14 @@ class PayoutRequestCustomer(object):
             self.full_name = full_name
         if id is not None:
             self.id = id
+        if identity is not None:
+            self.identity = identity
         if last_name is not None:
             self.last_name = last_name
         if living_address is not None:
             self.living_address = living_address
         if phone is not None:
             self.phone = phone
-
-    @property
-    def document_number(self):
-        """Gets the document_number of this PayoutRequestCustomer.  # noqa: E501
-
-        Customer document number *(mandatory for 'Latin America' methods only)* For 'Latin America' is required for methods where country = AR, BR, CL, CO, PE, UY  # noqa: E501
-
-        :return: The document_number of this PayoutRequestCustomer.  # noqa: E501
-        :rtype: str
-        """
-        return self._document_number
-
-    @document_number.setter
-    def document_number(self, document_number):
-        """Sets the document_number of this PayoutRequestCustomer.
-
-        Customer document number *(mandatory for 'Latin America' methods only)* For 'Latin America' is required for methods where country = AR, BR, CL, CO, PE, UY  # noqa: E501
-
-        :param document_number: The document_number of this PayoutRequestCustomer.  # noqa: E501
-        :type: str
-        """
-
-        self._document_number = document_number
 
     @property
     def document_type(self):
@@ -247,6 +224,29 @@ class PayoutRequestCustomer(object):
             )  # noqa: E501
 
         self._id = id
+
+    @property
+    def identity(self):
+        """Gets the identity of this PayoutRequestCustomer.  # noqa: E501
+
+        Customer identity  - Customer’s personal identification number: 'CPF' or 'CNPJ' for Brazil, 'DNI' for Argentina and ID for other countries.  For SPEI - Customer CPF or CURP  # noqa: E501
+
+        :return: The identity of this PayoutRequestCustomer.  # noqa: E501
+        :rtype: str
+        """
+        return self._identity
+
+    @identity.setter
+    def identity(self, identity):
+        """Sets the identity of this PayoutRequestCustomer.
+
+        Customer identity  - Customer’s personal identification number: 'CPF' or 'CNPJ' for Brazil, 'DNI' for Argentina and ID for other countries.  For SPEI - Customer CPF or CURP  # noqa: E501
+
+        :param identity: The identity of this PayoutRequestCustomer.  # noqa: E501
+        :type: str
+        """
+
+        self._identity = identity
 
     @property
     def last_name(self):

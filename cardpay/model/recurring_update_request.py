@@ -93,6 +93,7 @@ class RecurringUpdateRequest(object):
     class Operation(object):
         CHANGE_STATUS = "CHANGE_STATUS"
         CONFIRM_3DS = "CONFIRM_3DS"
+        EXECUTE = "EXECUTE"
 
     @property
     def operation(self):
@@ -118,7 +119,7 @@ class RecurringUpdateRequest(object):
             raise ValueError(
                 "Invalid value for `operation`, must not be `None`"
             )  # noqa: E501
-        allowed_values = ["CHANGE_STATUS", "CONFIRM_3DS"]  # noqa: E501
+        allowed_values = ["CHANGE_STATUS", "CONFIRM_3DS", "EXECUTE"]  # noqa: E501
         if operation not in allowed_values:
             raise ValueError(
                 "Invalid value for `operation` ({0}), must be one of {1}".format(  # noqa: E501

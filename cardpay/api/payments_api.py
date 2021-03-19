@@ -38,7 +38,7 @@ class PaymentsApi(object):
 
         Endpoint for creation payments. Request example presented for Gateway mode.  # noqa: E501
         :param PaymentRequest payment_request: paymentRequest (required)
-        :return: PaymentCreationResponse
+        :return: PaymentGatewayCreationResponse
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -52,7 +52,7 @@ class PaymentsApi(object):
 
         Endpoint for creation payments. Request example presented for Gateway mode.  # noqa: E501
         :param PaymentRequest payment_request: paymentRequest (required)
-        :return: PaymentCreationResponse
+        :return: PaymentGatewayCreationResponse
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -105,11 +105,93 @@ class PaymentsApi(object):
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type='PaymentCreationResponse',  # noqa: E501
-            _return_http_data_only=params.get('_return_http_data_only'),
-            _preload_content=params.get('_preload_content', True),
-            _request_timeout=params.get('_request_timeout'),
-            collection_formats=collection_formats)
+            response_type="PaymentGatewayCreationResponse",  # noqa: E501
+            _return_http_data_only=params.get("_return_http_data_only"),
+            _preload_content=params.get("_preload_content", True),
+            _request_timeout=params.get("_request_timeout"),
+            collection_formats=collection_formats,
+        )
+
+    def get_authentication_data1(self, payment_id, **kwargs):  # noqa: E501
+        """Get payment 3DS result information  # noqa: E501
+
+        :param str payment_id: Payment ID (required)
+        :return: AuthenticationDataResponse
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs["_return_http_data_only"] = True
+
+        (data) = self.get_authentication_data1_with_http_info(
+            payment_id, **kwargs
+        )  # noqa: E501
+        return data
+
+    def get_authentication_data1_with_http_info(
+        self, payment_id, **kwargs
+    ):  # noqa: E501
+        """Get payment 3DS result information  # noqa: E501
+
+        :param str payment_id: Payment ID (required)
+        :return: AuthenticationDataResponse
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        all_params = ["payment_id"]  # noqa: E501
+        all_params.append("_return_http_data_only")
+        all_params.append("_preload_content")
+        all_params.append("_request_timeout")
+
+        params = locals()
+        for key, val in six.iteritems(params["kwargs"]):
+            if key not in all_params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method get_authentication_data1" % key
+                )
+            params[key] = val
+        del params["kwargs"]
+        # verify the required parameter 'payment_id' is set
+        if "payment_id" not in params or params["payment_id"] is None:
+            raise ValueError(
+                "Missing the required parameter `payment_id` when calling `get_authentication_data1`"
+            )  # noqa: E501
+
+        collection_formats = {}
+
+        path_params = {}
+        if "payment_id" in params:
+            path_params["paymentId"] = params["payment_id"]  # noqa: E501
+
+        query_params = []
+
+        header_params = {}
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+        # HTTP header `Accept`
+        header_params["Accept"] = self.api_client.select_header_accept(
+            ["application/json"]
+        )  # noqa: E501
+
+        return self.api_client.call_api(
+            "/api/payments/{paymentId}/threedsecure",
+            "GET",
+            path_params,
+            query_params,
+            header_params,
+            body=body_params,
+            post_params=form_params,
+            files=local_var_files,
+            response_type="AuthenticationDataResponse",  # noqa: E501
+            _return_http_data_only=params.get("_return_http_data_only"),
+            _preload_content=params.get("_preload_content", True),
+            _request_timeout=params.get("_request_timeout"),
+            collection_formats=collection_formats,
+        )
 
     def get_payment(self, payment_id, **kwargs):  # noqa: E501
         """Get payment information  # noqa: E501
@@ -184,6 +266,76 @@ class PaymentsApi(object):
             _request_timeout=params.get('_request_timeout'),
             collection_formats=collection_formats)
 
+    def get_payment_methods(self, **kwargs):  # noqa: E501
+        """Get payment methods  # noqa: E501
+
+        Endpoint for get payment methods by current terminal code  # noqa: E501
+        :return: PaymentMethodsList
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs["_return_http_data_only"] = True
+
+        (data) = self.get_payment_methods_with_http_info(**kwargs)  # noqa: E501
+        return data
+
+    def get_payment_methods_with_http_info(self, **kwargs):  # noqa: E501
+        """Get payment methods  # noqa: E501
+
+        Endpoint for get payment methods by current terminal code  # noqa: E501
+        :return: PaymentMethodsList
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        all_params = []  # noqa: E501
+        all_params.append("_return_http_data_only")
+        all_params.append("_preload_content")
+        all_params.append("_request_timeout")
+
+        params = locals()
+        for key, val in six.iteritems(params["kwargs"]):
+            if key not in all_params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method get_payment_methods" % key
+                )
+            params[key] = val
+        del params["kwargs"]
+
+        collection_formats = {}
+
+        path_params = {}
+
+        query_params = []
+
+        header_params = {}
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+        # HTTP header `Accept`
+        header_params["Accept"] = self.api_client.select_header_accept(
+            ["application/json"]
+        )  # noqa: E501
+
+        return self.api_client.call_api(
+            "/api/payment_methods",
+            "GET",
+            path_params,
+            query_params,
+            header_params,
+            body=body_params,
+            post_params=form_params,
+            files=local_var_files,
+            response_type="PaymentMethodsList",  # noqa: E501
+            _return_http_data_only=params.get("_return_http_data_only"),
+            _preload_content=params.get("_preload_content", True),
+            _request_timeout=params.get("_request_timeout"),
+            collection_formats=collection_formats,
+        )
+
     def get_payments(self, request_id, **kwargs):  # noqa: E501
         """Get payments information  # noqa: E501
 
@@ -239,28 +391,40 @@ class PaymentsApi(object):
                 params['request_id'] is None):
             raise ValueError("Missing the required parameter `request_id` when calling `get_payments`")  # noqa: E501
 
-        if ('request_id' in params and
-                len(params['request_id']) > 50):
-            raise ValueError("Invalid value for parameter `request_id` when calling `get_payments`, length must be less than or equal to `50`")  # noqa: E501
-        if ('request_id' in params and
-                len(params['request_id']) < 0):
-            raise ValueError("Invalid value for parameter `request_id` when calling `get_payments`, length must be greater than or equal to `0`")  # noqa: E501
-        if 'max_count' in params and params['max_count'] > 10000:  # noqa: E501
-            raise ValueError("Invalid value for parameter `max_count` when calling `get_payments`, must be a value less than or equal to `10000`")  # noqa: E501
-        if ('merchant_order_id' in params and
-                len(params['merchant_order_id']) > 50):
-            raise ValueError("Invalid value for parameter `merchant_order_id` when calling `get_payments`, length must be less than or equal to `50`")  # noqa: E501
-        if ('merchant_order_id' in params and
-                len(params['merchant_order_id']) < 0):
-            raise ValueError("Invalid value for parameter `merchant_order_id` when calling `get_payments`, length must be greater than or equal to `0`")  # noqa: E501
-        if ('payment_method' in params and
-                len(params['payment_method']) > 100):
-            raise ValueError("Invalid value for parameter `payment_method` when calling `get_payments`, length must be less than or equal to `100`")  # noqa: E501
-        if ('payment_method' in params and
-                len(params['payment_method']) < 0):
-            raise ValueError("Invalid value for parameter `payment_method` when calling `get_payments`, length must be greater than or equal to `0`")  # noqa: E501
-        if 'sort_order' in params and not re.search(r'asc|desc', params['sort_order']):  # noqa: E501
-            raise ValueError("Invalid value for parameter `sort_order` when calling `get_payments`, must conform to the pattern `/asc|desc/`")  # noqa: E501
+        if "request_id" in params and len(params["request_id"]) > 50:
+            raise ValueError(
+                "Invalid value for parameter `request_id` when calling `get_payments`, length must be less than or equal to `50`"
+            )  # noqa: E501
+        if "request_id" in params and len(params["request_id"]) < 1:
+            raise ValueError(
+                "Invalid value for parameter `request_id` when calling `get_payments`, length must be greater than or equal to `1`"
+            )  # noqa: E501
+        if "max_count" in params and params["max_count"] > 10000:  # noqa: E501
+            raise ValueError(
+                "Invalid value for parameter `max_count` when calling `get_payments`, must be a value less than or equal to `10000`"
+            )  # noqa: E501
+        if "merchant_order_id" in params and len(params["merchant_order_id"]) > 50:
+            raise ValueError(
+                "Invalid value for parameter `merchant_order_id` when calling `get_payments`, length must be less than or equal to `50`"
+            )  # noqa: E501
+        if "merchant_order_id" in params and len(params["merchant_order_id"]) < 0:
+            raise ValueError(
+                "Invalid value for parameter `merchant_order_id` when calling `get_payments`, length must be greater than or equal to `0`"
+            )  # noqa: E501
+        if "payment_method" in params and len(params["payment_method"]) > 50:
+            raise ValueError(
+                "Invalid value for parameter `payment_method` when calling `get_payments`, length must be less than or equal to `50`"
+            )  # noqa: E501
+        if "payment_method" in params and len(params["payment_method"]) < 0:
+            raise ValueError(
+                "Invalid value for parameter `payment_method` when calling `get_payments`, length must be greater than or equal to `0`"
+            )  # noqa: E501
+        if "sort_order" in params and not re.search(
+            r"asc|desc", params["sort_order"]
+        ):  # noqa: E501
+            raise ValueError(
+                "Invalid value for parameter `sort_order` when calling `get_payments`, must conform to the pattern `/asc|desc/`"
+            )  # noqa: E501
         collection_formats = {}
 
         path_params = {}

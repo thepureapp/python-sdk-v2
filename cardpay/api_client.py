@@ -85,10 +85,12 @@ class ApiClient(object):
         'object': object,
     }
 
-    def __init__(self, configuration=None, baseUrl=None, terminal_code=None, password=None, debug=False):
+    def __init__(self, configuration=None, baseUrl=None, terminal_code=None, password=None,callback_secret=None,
+        debug=False):
 
         if configuration is None:
-            configuration = Configuration(base_url=baseUrl, terminal_code=terminal_code, password=password, debug=debug)
+            configuration = Configuration(base_url=baseUrl, terminal_code=terminal_code, password=password,callback_secret=callback_secret,
+                debug=debug)
 
         self.configuration = configuration
 
@@ -100,7 +102,7 @@ class ApiClient(object):
         self.cookie = None
 
         # Set default User-Agent.
-        self.user_agent = 'CardpaySdk/1.9.3.5/Python'
+        self.user_agent = "CardpaySdk/2.28.0/Python"
 
     def __del__(self):
         if self._pool is not None:
@@ -110,7 +112,7 @@ class ApiClient(object):
     def calc_signature(self, message):
         sha512 = hashlib.sha512()
         sha512.update(message.encode('utf-8'))
-        sha512.update(self.configuration.password.encode('utf-8'))
+        sha512.update(self.configuration.callback_secret.encode('utf-8'))
         return sha512.hexdigest()
 
     def is_valid_signature(self, message, signature):

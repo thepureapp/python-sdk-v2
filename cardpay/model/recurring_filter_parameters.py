@@ -125,9 +125,9 @@ class RecurringFilterParameters(object):
             raise ValueError(
                 "Invalid value for `request_id`, length must be less than or equal to `50`"
             )  # noqa: E501
-        if request_id is not None and len(request_id) < 0:
+        if request_id is not None and len(request_id) < 1:
             raise ValueError(
-                "Invalid value for `request_id`, length must be greater than or equal to `0`"
+                "Invalid value for `request_id`, length must be greater than or equal to `1`"
             )  # noqa: E501
 
         self._request_id = request_id
@@ -183,9 +183,9 @@ class RecurringFilterParameters(object):
         :param payment_method: The payment_method of this RecurringFilterParameters.  # noqa: E501
         :type: str
         """
-        if payment_method is not None and len(payment_method) > 100:
+        if payment_method is not None and len(payment_method) > 50:
             raise ValueError(
-                "Invalid value for `payment_method`, length must be less than or equal to `100`"
+                "Invalid value for `payment_method`, length must be less than or equal to `50`"
             )  # noqa: E501
         if payment_method is not None and len(payment_method) < 0:
             raise ValueError(

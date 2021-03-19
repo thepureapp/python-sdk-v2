@@ -237,28 +237,40 @@ class RefundsApi(object):
                 params['request_id'] is None):
             raise ValueError("Missing the required parameter `request_id` when calling `get_refunds`")  # noqa: E501
 
-        if ('request_id' in params and
-                len(params['request_id']) > 50):
-            raise ValueError("Invalid value for parameter `request_id` when calling `get_refunds`, length must be less than or equal to `50`")  # noqa: E501
-        if ('request_id' in params and
-                len(params['request_id']) < 0):
-            raise ValueError("Invalid value for parameter `request_id` when calling `get_refunds`, length must be greater than or equal to `0`")  # noqa: E501
-        if 'max_count' in params and params['max_count'] > 10000:  # noqa: E501
-            raise ValueError("Invalid value for parameter `max_count` when calling `get_refunds`, must be a value less than or equal to `10000`")  # noqa: E501
-        if ('merchant_order_id' in params and
-                len(params['merchant_order_id']) > 50):
-            raise ValueError("Invalid value for parameter `merchant_order_id` when calling `get_refunds`, length must be less than or equal to `50`")  # noqa: E501
-        if ('merchant_order_id' in params and
-                len(params['merchant_order_id']) < 0):
-            raise ValueError("Invalid value for parameter `merchant_order_id` when calling `get_refunds`, length must be greater than or equal to `0`")  # noqa: E501
-        if ('payment_method' in params and
-                len(params['payment_method']) > 100):
-            raise ValueError("Invalid value for parameter `payment_method` when calling `get_refunds`, length must be less than or equal to `100`")  # noqa: E501
-        if ('payment_method' in params and
-                len(params['payment_method']) < 0):
-            raise ValueError("Invalid value for parameter `payment_method` when calling `get_refunds`, length must be greater than or equal to `0`")  # noqa: E501
-        if 'sort_order' in params and not re.search(r'asc|desc', params['sort_order']):  # noqa: E501
-            raise ValueError("Invalid value for parameter `sort_order` when calling `get_refunds`, must conform to the pattern `/asc|desc/`")  # noqa: E501
+        if "request_id" in params and len(params["request_id"]) > 50:
+            raise ValueError(
+                "Invalid value for parameter `request_id` when calling `get_refunds`, length must be less than or equal to `50`"
+            )  # noqa: E501
+        if "request_id" in params and len(params["request_id"]) < 1:
+            raise ValueError(
+                "Invalid value for parameter `request_id` when calling `get_refunds`, length must be greater than or equal to `1`"
+            )  # noqa: E501
+        if "max_count" in params and params["max_count"] > 10000:  # noqa: E501
+            raise ValueError(
+                "Invalid value for parameter `max_count` when calling `get_refunds`, must be a value less than or equal to `10000`"
+            )  # noqa: E501
+        if "merchant_order_id" in params and len(params["merchant_order_id"]) > 50:
+            raise ValueError(
+                "Invalid value for parameter `merchant_order_id` when calling `get_refunds`, length must be less than or equal to `50`"
+            )  # noqa: E501
+        if "merchant_order_id" in params and len(params["merchant_order_id"]) < 0:
+            raise ValueError(
+                "Invalid value for parameter `merchant_order_id` when calling `get_refunds`, length must be greater than or equal to `0`"
+            )  # noqa: E501
+        if "payment_method" in params and len(params["payment_method"]) > 50:
+            raise ValueError(
+                "Invalid value for parameter `payment_method` when calling `get_refunds`, length must be less than or equal to `50`"
+            )  # noqa: E501
+        if "payment_method" in params and len(params["payment_method"]) < 0:
+            raise ValueError(
+                "Invalid value for parameter `payment_method` when calling `get_refunds`, length must be greater than or equal to `0`"
+            )  # noqa: E501
+        if "sort_order" in params and not re.search(
+            r"asc|desc", params["sort_order"]
+        ):  # noqa: E501
+            raise ValueError(
+                "Invalid value for parameter `sort_order` when calling `get_refunds`, must conform to the pattern `/asc|desc/`"
+            )  # noqa: E501
         collection_formats = {}
 
         path_params = {}

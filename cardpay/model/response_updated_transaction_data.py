@@ -69,10 +69,14 @@ class ResponseUpdatedTransactionData(object):
 
         if details is not None:
             self.details = details
-        self.id = id
-        self.is_executed = is_executed
-        self.status = status
-        self.status_to = status_to
+        if id is not None:
+            self.id = id
+        if is_executed is not None:
+            self.is_executed = is_executed
+        if status is not None:
+            self.status = status
+        if status_to is not None:
+            self.status_to = status_to
         if updated is not None:
             self.updated = updated
 
@@ -119,8 +123,6 @@ class ResponseUpdatedTransactionData(object):
         :param id: The id of this ResponseUpdatedTransactionData.  # noqa: E501
         :type: str
         """
-        if id is None:
-            raise ValueError("Invalid value for `id`, must not be `None`")  # noqa: E501
 
         self._id = id
 
@@ -144,10 +146,6 @@ class ResponseUpdatedTransactionData(object):
         :param is_executed: The is_executed of this ResponseUpdatedTransactionData.  # noqa: E501
         :type: bool
         """
-        if is_executed is None:
-            raise ValueError(
-                "Invalid value for `is_executed`, must not be `None`"
-            )  # noqa: E501
 
         self._is_executed = is_executed
 
@@ -161,6 +159,7 @@ class ResponseUpdatedTransactionData(object):
         REFUNDED = "REFUNDED"
         PARTIALLY_REFUNDED = "PARTIALLY_REFUNDED"
         VOIDED = "VOIDED"
+        TERMINATED = "TERMINATED"
         CHARGED_BACK = "CHARGED_BACK"
         CHARGEBACK_RESOLVED = "CHARGEBACK_RESOLVED"
 
@@ -184,10 +183,6 @@ class ResponseUpdatedTransactionData(object):
         :param status: The status of this ResponseUpdatedTransactionData.  # noqa: E501
         :type: str
         """
-        if status is None:
-            raise ValueError(
-                "Invalid value for `status`, must not be `None`"
-            )  # noqa: E501
         allowed_values = [
             "NEW",
             "IN_PROGRESS",
@@ -198,6 +193,7 @@ class ResponseUpdatedTransactionData(object):
             "REFUNDED",
             "PARTIALLY_REFUNDED",
             "VOIDED",
+            "TERMINATED",
             "CHARGED_BACK",
             "CHARGEBACK_RESOLVED",
         ]  # noqa: E501
@@ -213,6 +209,7 @@ class ResponseUpdatedTransactionData(object):
     class StatusTo(object):
         REVERSE = "REVERSE"
         COMPLETE = "COMPLETE"
+        TERMINATE = "TERMINATE"
 
     @property
     def status_to(self):
@@ -234,11 +231,7 @@ class ResponseUpdatedTransactionData(object):
         :param status_to: The status_to of this ResponseUpdatedTransactionData.  # noqa: E501
         :type: str
         """
-        if status_to is None:
-            raise ValueError(
-                "Invalid value for `status_to`, must not be `None`"
-            )  # noqa: E501
-        allowed_values = ["REVERSE", "COMPLETE"]  # noqa: E501
+        allowed_values = ["REVERSE", "COMPLETE", "TERMINATE"]  # noqa: E501
         if status_to not in allowed_values:
             raise ValueError(
                 "Invalid value for `status_to` ({0}), must be one of {1}".format(  # noqa: E501

@@ -32,7 +32,14 @@ class Configuration(object):
 
     _default = None
 
-    def __init__(self, base_url=None, terminal_code=None, password=None, debug=False):
+    def __init__(
+        self,
+        base_url=None,
+        terminal_code=None,
+        password=None,
+        callback_secret=None,
+        debug=False,
+    ):
         """Constructor"""
         if self._default:
             for key in self._default.__dict__.keys():
@@ -44,6 +51,7 @@ class Configuration(object):
 
         self.terminal_code = terminal_code
         self.password = password
+        self.callback_secret = callback_secret
 
         # Temp file folder for downloading files
         self.temp_folder_path = None
@@ -200,9 +208,12 @@ class Configuration(object):
 
         :return: The report for debugging.
         """
-        return "Python SDK Debug Report:\n"\
-               "OS: {env}\n"\
-               "Python Version: {pyversion}\n"\
-               "Version of the API: 3.0\n"\
-               "SDK Package Version: 1.5.0.9.3".\
-               format(env=sys.platform, pyversion=sys.version)
+        return (
+            "Python SDK Debug Report:\n"
+            "OS: {env}\n"
+            "Python Version: {pyversion}\n"
+            "Version of the API: 3.0\n"
+            "SDK Package Version: 2.28.0".format(
+                env=sys.platform, pyversion=sys.version
+            )
+        )

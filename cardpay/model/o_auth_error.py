@@ -41,8 +41,10 @@ class OAuthError(object):
         self._message = None
         self.discriminator = None
 
-        self.name = name
-        self.message = message
+        if name is not None:
+            self.name = name
+        if message is not None:
+            self.message = message
 
     class Name(object):
         REQUEST = "INVALID_REQUEST"
@@ -69,10 +71,6 @@ class OAuthError(object):
         :param name: The name of this OAuthError.  # noqa: E501
         :type: str
         """
-        if name is None:
-            raise ValueError(
-                "Invalid value for `name`, must not be `None`"
-            )  # noqa: E501
         allowed_values = [
             "INVALID_REQUEST",
             "INVALID_GRANT",
@@ -107,10 +105,6 @@ class OAuthError(object):
         :param message: The message of this OAuthError.  # noqa: E501
         :type: str
         """
-        if message is None:
-            raise ValueError(
-                "Invalid value for `message`, must not be `None`"
-            )  # noqa: E501
 
         self._message = message
 

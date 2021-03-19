@@ -1,6 +1,6 @@
 # Cardpay APIv2 Python SDK
 
-You can sign up for a Cardpay account at https://www.cardpay.com.
+You can sign up for a Unlimint account at https://www.unlimint.com.
 
 ## Getting Started
 
@@ -17,7 +17,7 @@ Python 2
 If the python package is hosted on Github, you can install directly from Github
 
 ```sh
-pip install git+https://github.com/Sinkler/python-sdk-v2.git --upgrade
+pip install git+https://github.com/thepureapp/python-sdk-v2.git --upgrade
 ```
 
 Then import the package:

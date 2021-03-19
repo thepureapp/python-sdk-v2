@@ -32,18 +32,21 @@ class PayoutResponseCardAccount(object):
       attribute_map (dict): The key is attribute name
                             and the value is json key in definition.
     """
-    swagger_types = {"card": "PayoutResponseCard"}
+    swagger_types = {"card": "PayoutResponseCard", "token": "str"}
 
-    attribute_map = {"card": "card"}
+    attribute_map = {"card": "card", "token": "token"}
 
-    def __init__(self, card=None):  # noqa: E501
+    def __init__(self, card=None, token=None):  # noqa: E501
         """PayoutResponseCardAccount - a model defined in Swagger"""  # noqa: E501
 
         self._card = None
+        self._token = None
         self.discriminator = None
 
         if card is not None:
             self.card = card
+        if token is not None:
+            self.token = token
 
     @property
     def card(self):
@@ -67,6 +70,29 @@ class PayoutResponseCardAccount(object):
         """
 
         self._card = card
+
+    @property
+    def token(self):
+        """Gets the token of this PayoutResponseCardAccount.  # noqa: E501
+
+        Generated card token value. Token can be returned only for successful transactions (not for declined transactions).   # noqa: E501
+
+        :return: The token of this PayoutResponseCardAccount.  # noqa: E501
+        :rtype: str
+        """
+        return self._token
+
+    @token.setter
+    def token(self, token):
+        """Sets the token of this PayoutResponseCardAccount.
+
+        Generated card token value. Token can be returned only for successful transactions (not for declined transactions).   # noqa: E501
+
+        :param token: The token of this PayoutResponseCardAccount.  # noqa: E501
+        :type: str
+        """
+
+        self._token = token
 
     def to_dict(self):
         """Returns the model properties as a dict"""

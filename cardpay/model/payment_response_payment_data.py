@@ -385,6 +385,7 @@ class PaymentResponsePaymentData(object):
         REFUNDED = "REFUNDED"
         PARTIALLY_REFUNDED = "PARTIALLY_REFUNDED"
         VOIDED = "VOIDED"
+        TERMINATED = "TERMINATED"
         CHARGED_BACK = "CHARGED_BACK"
         CHARGEBACK_RESOLVED = "CHARGEBACK_RESOLVED"
 
@@ -418,6 +419,7 @@ class PaymentResponsePaymentData(object):
             "REFUNDED",
             "PARTIALLY_REFUNDED",
             "VOIDED",
+            "TERMINATED",
             "CHARGED_BACK",
             "CHARGEBACK_RESOLVED",
         ]  # noqa: E501

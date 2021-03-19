@@ -321,6 +321,14 @@ class PaymentRequest(object):
         :param payment_method: The payment_method of this PaymentRequest.  # noqa: E501
         :type: str
         """
+        if payment_method is not None and len(payment_method) > 50:
+            raise ValueError(
+                "Invalid value for `payment_method`, length must be less than or equal to `50`"
+            )  # noqa: E501
+        if payment_method is not None and len(payment_method) < 0:
+            raise ValueError(
+                "Invalid value for `payment_method`, length must be greater than or equal to `0`"
+            )  # noqa: E501
 
         self._payment_method = payment_method
 

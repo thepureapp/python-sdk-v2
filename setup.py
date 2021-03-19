@@ -12,17 +12,17 @@ with open(os.path.join(here, "README.md"), "r", encoding="utf-8") as fp:
 
 setup(
     name="cardpay",
-    version="1.5.0.9.3",
-    description="Cardpay APIv3 Python SDK",
+    version="2.28.0",
+    description="Unlimint APIv3 Python SDK",
     author_email="",
     url="https://github.com/cardpay/python-sdk-v3.git",
     license="MIT",
     keywords=["cardpay", "APIv3", "CardPay REST API"],
     install_requires=[
-        "certifi>=2017.4.17",
-        "python-dateutil>=2.1",
-        "six>=1.10",
-        "urllib3>=1.23"
+        "certifi>=2019.11.28",
+        "python-dateutil>=2.8.0",
+        "six>=1.14.0",
+        "urllib3>=1.25.8"
     ],
     packages=find_packages(exclude=["tests", "tests.*"]),
     include_package_data=True,
@@ -38,7 +38,7 @@ setup(
         "Topic :: Software Development :: Libraries :: Python Modules",
     ],
     project_urls={
-        "Documentation": "https://integration.cardpay.com/v3/",
+        "Documentation": "https://integration.unlimint.com/",
         "Source Code": "https://github.com/cardpay/python-sdk-v3",
     }
 )
